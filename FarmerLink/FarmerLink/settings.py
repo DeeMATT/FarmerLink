@@ -43,6 +43,7 @@ API_VERSION = os.getenv('API_VERSION')
 # Application definition
 
 INSTALLED_APPS = [
+    'ussdConnect',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
