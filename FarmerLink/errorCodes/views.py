@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from enum import Enum, IntEnum
+from errorCodes.models import Error
+from django.db import IntegrityError
 
-# Create your views here.
+
+class ErrorCodes(IntEnum):
+    USER = 1
