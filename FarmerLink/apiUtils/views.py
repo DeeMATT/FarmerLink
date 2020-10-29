@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+htpfrom django.http import JsonResponse, HttpResponse
 
 from http import HTTPStatus
 
@@ -38,24 +38,9 @@ def createdResponse(message="", body={}):
     return successResponse(HTTPStatus.CREATED, message=message, body=body)
 
 
-def successResponse(httpStatusCode=HTTPStatus.OK, message="", body={}, pagination=None, kwargs=None, origin='*'):
-    responseData = dict()
-    responseData['data'] = body
-    responseData['metaData'] = kwargs
-    responseData['message'] = message
+def successResponse(response, **kwargs):
 
-    if pagination:
-        responseData['pagination'] = pagination
-
-    response = JsonResponse(responseData, status=httpStatusCode, safe=False)
-    
-    if origin:
-        if origin != '*':
-            # set header
-            response['Access-Control-Allow-Origin'] = origin
-            
-        response['Content-type'] = text/plain
-        
+    response = HttpResponse(response, content_type="text/plain")        
     return response
 
 
